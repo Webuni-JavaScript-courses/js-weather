@@ -1,0 +1,80 @@
+:root {
+    --font-color: #242424;
+    --primary-color: #00C4C4;
+    --primary-light-color: #90DEDE;
+    --secondary-color: #004545;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    color: var(--font-color);
+}
+
+.header {
+    background-color: var(--primary-color);
+    padding: 2px 24px;
+}
+
+.content,
+.search-bar {
+    padding: 16px;
+}
+
+.search-bar {
+    background-color: var(--primary-light-color);
+}
+
+.horizontal-spacer {
+    flex: 1 1 auto;
+}
+
+.form-container > form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.form-item {
+    margin-right: 16px;
+}
+
+.form-item > input {
+    line-height: 32px;
+    height: 32px;
+    border: 1px solid #747474;
+    border-radius: 4px;
+    width: 200px;
+    padding: 0 8px;
+    background-color: rgba(255,255,255, 0.8);
+}
+
+#city {
+    flex: 3 1 auto;
+}
+
+#city > input {
+    width: 100%;
+}
+
+button {
+    background: none;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    padding: 8px 16px;
+    border: none;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+  }
+
+  button:hover {
+    color: white;
+    background-color: #008F8F;
+  }
+  
+  button:focus {
+    outline: none;
+    background-color: #00C4C4;
+    color: var(--font-color);
+  }
