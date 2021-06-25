@@ -21,21 +21,21 @@ export const initForm = () => {
     const maxDateDay = maxDate.getDate();
     datePicker.max = `${maxDateYear}-${maxDateMonth < 10 ? `0${maxDateMonth}` : maxDateMonth}-${maxDateDay < 10 ? `0${maxDateDay}` : maxDateDay}`;
     form.addEventListener('submit', async e => {
-    const city = document.getElementById('city-input').value;
-    const date = document.getElementById('date-input').value;
-    console.log(city, date);
-    e.preventDefault();
-    submitButton.disabled = true;
-    cardsContainer.insertAdjacentHTML('afterbegin', `<div id="loading-indicator" class="loader"></div>`);
-    try {
-        const weatherData = await loadData(city, date);
-        addCard(city, date, weatherData)
-        form.reset();
-    } catch (er){
-        errorMessage.style.display = 'block';
-        setTimeout(() => errorMessage.style.display = 'none', 2000);
-    }
-    submitButton.disabled = false;
-    cardsContainer.removeChild(document.getElementById('loading-indicator'))
+        const city = document.getElementById('city-input').value;
+        const date = document.getElementById('date-input').value;
+        console.log(city, date);
+        e.preventDefault();
+        submitButton.disabled = true;
+        cardsContainer.insertAdjacentHTML('afterbegin', `<div id="loading-indicator" class="loader"></div>`);
+        try {
+            const weatherData = await loadData(city, date);
+            addCard(city, date, weatherData)
+            form.reset();
+        } catch {
+            errorMessage.style.display = 'block';
+            setTimeout(() => errorMessage.style.display = 'none', 2000);
+        }
+        submitButton.disabled = false;
+        cardsContainer.removeChild(document.getElementById('loading-indicator'));
     });
 }
