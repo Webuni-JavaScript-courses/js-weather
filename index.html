@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>JavaScript Meteorológus</title>
+        <script src="bundle.js"></script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h2>JavaScript Meteorológus</h1>
+        </div>
+        <div class="search-bar">
+            <div class="form-container">
+                <form id="form" action="">
+                    <div id="city" class="form-item">
+                        <input id="city-input" required type="text" placeholder="Város">
+                    </div>
+                    <div class="form-item">
+                        <input id="date-input" required type="date">
+                    </div>
+                    <div class="horizontal-spacer"></div>
+                    <div>
+                        <button type="reset">X</button>
+                        <button id="submit" type="submit">Keresés</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="content">
+            <div id="error-message" class="error-message" style="display: none;">Hiba történt az adatbetöltés közben</div>
+            <div class="weather-container" id="cards-container">
+            </div>
+        </div>
+    </body>
+</html>
