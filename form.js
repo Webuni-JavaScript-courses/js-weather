@@ -3,16 +3,23 @@ import { loadData } from "./weather";
 
 export const initForm = () => {
     const form = document.getElementById('form');
-    const loadingIndicator = document.getElementById('loading-indicator');
     const errorMessage = document.getElementById('error-message');
     const submitButton = document.getElementById('submit');
     const datePicker = document.getElementById('date-input');
+    // Minimum dátum: mai nap
     const now = new Date();
     const year = now.getFullYear();
     const month = now.getMonth() + 1;
     const day = now.getDate();
     const cardsContainer = document.getElementById('cards-container');
-    datePicker.max = `${year}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`;
+    datePicker.min = `${year}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`;
+    // Maximum dátum: mai nap + 6 nap
+    const maxDate = now;
+    maxDate.setDate(now.getDate() + 6); // Itt adunk hozzá 6 napot a mai naphoz
+    const maxDateYear = maxDate.getFullYear();
+    const maxDateMonth = maxDate.getMonth() + 1;
+    const maxDateDay = maxDate.getDate();
+    datePicker.max = `${maxDateYear}-${maxDateMonth < 10 ? `0${maxDateMonth}` : maxDateMonth}-${maxDateDay < 10 ? `0${maxDateDay}` : maxDateDay}`;
     form.addEventListener('submit', async e => {
     const city = document.getElementById('city-input').value;
     const date = document.getElementById('date-input').value;
@@ -24,7 +31,7 @@ export const initForm = () => {
         const weatherData = await loadData(city, date);
         addCard(city, date, weatherData)
         form.reset();
-    } catch {
+    } catch (er){
         errorMessage.style.display = 'block';
         setTimeout(() => errorMessage.style.display = 'none', 2000);
     }
